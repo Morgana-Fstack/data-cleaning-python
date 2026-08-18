@@ -1,20 +1,58 @@
-# DGT2823 - Trabalho Pratico
+# DGT2823 — Data Cleaning with Python
 
-Trabalho pratico da disciplina DGT2823 - Tecnologias para desenv. de solucoes
-de big data. Exercicios de manipulacao e limpeza de dados usando a biblioteca
-pandas (Python).
+[English](#english) | [Português](#português)
 
-## Arquivos
+## English
 
-- `data.csv` - conjunto de dados fornecido no enunciado
-- `microatividades.py` - microatividades 1 a 5 (leitura, subset, max_rows,
-  head/tail, info)
-- `pratica_pandas.py` - trabalho pratico (limpeza e conversao da coluna Date)
+Practical project for **DGT2823 — Technologies for Big Data Solution Development**. It contains data manipulation and cleaning exercises built with Python and pandas.
 
-## Como rodar
+### Project contents
 
-```
+- `data.csv` — dataset provided for the assignment;
+- `microatividades.py` — activities covering data reading, subsets, display options, `head`, `tail` and `info`;
+- `pratica_pandas.py` — practical data cleaning and conversion of the `Date` column.
+
+### Technologies
+
+- Python
+- pandas
+- CSV data
+
+### How to run
+
+```bash
 pip install pandas
 python microatividades.py
 python pratica_pandas.py
 ```
+
+---
+
+## Português
+
+Projeto prático da disciplina **DGT2823 — Tecnologias para Desenvolvimento de Soluções de Big Data**. Reúne exercícios de manipulação e limpeza de dados desenvolvidos com Python e pandas.
+
+### Conteúdo do projeto
+
+- `data.csv` — conjunto de dados fornecido para a atividade;
+- `microatividades.py` — atividades de leitura, subconjuntos, opções de exibição, `head`, `tail` e `info`;
+- `pratica_pandas.py` — prática de limpeza de dados e conversão da coluna `Date`.
+
+### Tecnologias
+
+- Python
+- pandas
+- Dados em CSV
+
+### Como executar
+
+```bash
+pip install pandas
+python microatividades.py
+python pratica_pandas.py
+```
+
+## Author / Autora
+
+**Morgana Petterle da Cunha**  
+[LinkedIn](https://linkedin.com/in/morgana-petterle) · [GitHub](https://github.com/Morgana-Fstack)
