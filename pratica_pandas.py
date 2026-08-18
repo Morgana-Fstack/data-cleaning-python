@@ -1,59 +1,45 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+from pathlib import Path
 
-# Leitura do arquivo CSV
-df = pd.read_csv('data.csv', sep=';', engine='python', encoding='utf-8')
+DATA_FILE = Path(__file__).with_name('data.csv')
 
-# Verificando se os dados foram importados corretamente
-print("--- Informacoes gerais ---")
-print(df.info())
 
-print("\n--- Primeiras 10 linhas ---")
-print(df.head(10))
+def load_data(path: Path = DATA_FILE) -> pd.DataFrame:
+    """Load the semicolon-separated dataset used by the exercise."""
+    return pd.read_csv(path, sep=';', engine='python', encoding='utf-8')
 
-print("\n--- Ultimas 10 linhas ---")
-print(df.tail(10))
 
-# Criando uma copia do dataset original
-df_copy = df.copy()
+def clean_data(df: pd.DataFrame) -> pd.DataFrame:
+    """Return a cleaned copy without changing the original DataFrame."""
+    cleaned = df.copy()
+    cleaned['Calories'] = cleaned['Calories'].fillna(0)
 
-# Substitui os valores nulos da coluna Calories por 0
-df_copy['Calories'] = df_copy['Calories'].fillna(0)
-print("\n--- Apos preencher Calories com 0 ---")
-print(df_copy)
+    dates = cleaned['Date'].astype('string').str.strip("'")
+    dates = dates.replace({'20201226': '2020/12/26', '1900/01/01': np.nan})
+    cleaned['Date'] = pd.to_datetime(
+        dates,
+        format='%Y/%m/%d',
+        errors='coerce',
+    )
 
-# Substitui os valores nulos da coluna Date por '1900/01/01'
-df_copy['Date'] = df_copy['Date'].fillna('1900/01/01')
-print("\n--- Apos preencher Date com 1900/01/01 ---")
-print(df_copy)
+    return cleaned.dropna(subset=['Date']).reset_index(drop=True)
 
-# Primeira tentativa de converter Date para datetime (deve gerar erro)
-try:
-    df_copy['Date'] = pd.to_datetime(df_copy['Date'], format='%Y/%m/%d')
-except Exception as e:
-    print(f"\nErro esperado na primeira conversao: {e}")
 
-# Substitui o '1900/01/01' por NaN
-df_copy['Date'] = df_copy['Date'].replace('1900/01/01', np.nan)
+def main() -> None:
+    df = load_data()
 
-# Segunda tentativa de converter (ainda deve gerar erro por causa do 20201226)
-try:
-    df_copy['Date'] = pd.to_datetime(df_copy['Date'], format='%Y/%m/%d')
-except Exception as e:
-    print(f"\nErro esperado na segunda conversao: {e}")
+    print('--- Informações gerais ---')
+    df.info()
+    print('\n--- Primeiras 10 linhas ---')
+    print(df.head(10))
+    print('\n--- Últimas 10 linhas ---')
+    print(df.tail(10))
 
-# Trata o valor 20201226 (que esta fora do padrao AAAA/MM/DD)
-df_copy['Date'] = df_copy['Date'].replace('20201226', '2020/12/26')
+    cleaned = clean_data(df)
+    print('\n--- DataFrame final ---')
+    print(cleaned)
 
-# Conversao final da coluna Date para datetime
-# (o CSV traz as datas entre aspas simples, entao removo antes de converter)
-df_copy['Date'] = pd.to_datetime(df_copy['Date'].str.strip("'"), format='%Y/%m/%d')
-print("\n--- Apos todas as correcoes na coluna Date ---")
-print(df_copy)
 
-# Remove os registros com valores nulos (linha 22)
-df_copy = df_copy.dropna(subset=['Date'])
-
-# Dataframe final, ja limpo
-print("\n--- Dataframe final ---")
-print(df_copy)
+if __name__ == '__main__':
+    main()

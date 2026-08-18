@@ -21,9 +21,17 @@ Practical project for **DGT2823 — Technologies for Big Data Solution Developme
 ### How to run
 
 ```bash
-pip install pandas
+python -m venv .venv
+source .venv/bin/activate       # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
 python microatividades.py
 python pratica_pandas.py
+```
+
+### Validation
+
+```bash
+python -m unittest discover -s tests -v
 ```
 
 ---
@@ -47,9 +55,17 @@ Projeto prático da disciplina **DGT2823 — Tecnologias para Desenvolvimento de
 ### Como executar
 
 ```bash
-pip install pandas
+python -m venv .venv
+source .venv/bin/activate       # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
 python microatividades.py
 python pratica_pandas.py
+```
+
+### Validação
+
+```bash
+python -m unittest discover -s tests -v
 ```
 
 ## Author / Autora
