@@ -12,6 +12,16 @@ Practical project for **DGT2823 — Technologies for Big Data Solution Developme
 - `microatividades.py` — activities covering data reading, subsets, display options, `head`, `tail` and `info`;
 - `pratica_pandas.py` — practical data cleaning and conversion of the `Date` column.
 
+### Result
+
+The cleaning pipeline fills missing calorie values with zero, normalizes inconsistent dates and removes records without a valid date. The included dataset produces 31 valid rows from 32 source records.
+
+| Validation | Result |
+| --- | --- |
+| Missing calories after cleaning | 0 |
+| Invalid dates after cleaning | 0 |
+| Automated tests | 3 passing |
+
 ### Technologies
 
 - Python
@@ -45,6 +55,16 @@ Projeto prático da disciplina **DGT2823 — Tecnologias para Desenvolvimento de
 - `data.csv` — conjunto de dados fornecido para a atividade;
 - `microatividades.py` — atividades de leitura, subconjuntos, opções de exibição, `head`, `tail` e `info`;
 - `pratica_pandas.py` — prática de limpeza de dados e conversão da coluna `Date`.
+
+### Resultado
+
+O processo preenche calorias ausentes com zero, normaliza datas inconsistentes e remove registros sem data válida. O conjunto incluído produz 31 linhas válidas a partir de 32 registros originais.
+
+| Validação | Resultado |
+| --- | --- |
+| Calorias ausentes após a limpeza | 0 |
+| Datas inválidas após a limpeza | 0 |
+| Testes automatizados | 3 aprovados |
 
 ### Tecnologias
 
